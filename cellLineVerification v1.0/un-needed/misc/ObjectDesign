@@ -1,0 +1,16 @@
+//Design File.
+
+
+Object = {
+  //Value of specific Loci will be stored as strings
+  loci : {loci1 : ["Repetition1", "Reptition2"]},
+  modelIdentification : "ID"
+  }
+ 
+ EXAMPLE:
+ 
+ Object = {
+  loci : {Amelogenin : ["X"], CS51PO : ["11", "12"],  D2S1338 : ["19", "23"]},
+  modelIdentification : "HT-29"
+  }
+ 

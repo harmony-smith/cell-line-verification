@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cell Line Verification</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="scripting/database.js"></script>
+    <script src="scripting/FileParsing.js"></script>
+    <script src="scripting/main.js"></script>
+    <script src="scripting/algorithms.js"></script>
+    <script src="scripting/settingsGrab.js"></script>
+  </head>
+  <body>
+    <h1>Cell Line Verification</h1>
+    <!--Box for uploading the query and reference files-->
+   
+    <div id="form">
+      <div id="formLeft">
+        <div id="markerInputs">
+          <strong>Input Markers:</strong>
+          <table class="input">
+            <tr>
+              <td>
+                <label class="STRlabel" for="amelogeninInput">
+                  Amelogenin: <input type="text" size="10" id="input1" placeholder="X,Y">
+                </label>
+              </td>
+              <td>
+                <label class="STRlabel" for="D3S">
+                  D3S1358: <input type="text" size="10" value="" id="input9">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="STRlabel" for="D16">
+                  D16S539: <input type="text" size="10" value="" id="input2">
+                </label>
+              </td>
+              <td>
+                <label class="STRlabel" for="D13">
+                  D13S317: <input type="text" size="10" value="" id="input10">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="STRlabel" for="D5S">
+                  D5S818: <input type="text" size="10" value="" id="input3">
+                </label>
+              </td>
+              <td>
+                <label class="STRlabel" for="D7S">
+                  D7S820: <input type="text" size="10" value="" id="input11">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="STRlabel" for="CSF">
+                  CSF1PO: <input type="text" size="10" value="" id="input4">
+                </label>
+              </td>
+              <td>
+                <label class="STRlabel" for="D8S">
+                  D8S1179: <input type="text" size="10" value="" id="input12">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="STRlabel" for="D18">
+                  D18S51: <input type="text" size="10" value="" id="input5">
+                </label>
+              </td>
+              <td>
+                <label class="STRlabel" for="FGA">
+                  FGA: <input type="text" size="10" value="" id="input13">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="STRlabel" for="D19">
+                  D19S433: <input type="text" size="10" value="" id="input6">
+                </label>
+              </td>
+              <td>
+                <label class="STRlabel" for="TH01">
+                  TH01: <input type="text" size="10" value="" id="input14">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="STRlabel" for="D21">
+                  D21S11: <input type="text" size="10" value="" id="input7">
+                </label>
+              </td>
+              <td>
+                <label class="STRlabel" for="TPOX">
+                  TPOX: <input type="text" size="10" value="" id="input15">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="STRlabel" for="D2S">
+                  D2S1338: <input type="text" size="10" value="" id="input8">
+                </label>
+              </td>
+              <td>
+                <label class="STRlabel" for="vWA">
+                  vWA: <input type="text" size="10" value="" id="input16">
+                </label>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="query">
+          <strong>Upload Query:</strong>
+          <input type="file" id="queryUpload">
+        </div>
+        <div id="ref">
+          <strong>Upload Custom References:</strong>
+          <input type="file" id="refUpload">
+        </div>
+      </div>
+
+        <!--Title box for the compare settings box-->
+      <div id="formRight">
+        <div  id="scoring">
+          <!--Container for algorithm options and header-->
+          <strong>Algorithm:</strong>
+          <br>
+          <!--Options for algorithm-->
+          <label class="radioContainer" for="tanabeSelect">
+            <input type="radio" id="tanabeSelect" name="algorithm" value="Tanabe" checked>
+            Tanabe
+          </label>
+            <br>
+          <label class="radioContainer" for="mastersVQuerySelect">
+            <input type="radio" id="mastersVQuerySelect" name="algorithm" value="Masters (vs. Query)">
+            Masters (vs. Query)
+          </label>
+            <br>
+          <label class="radioContainer" for="mastersVReferenceSelect">
+            <input type="radio" id="mastersVReferenceSelect" name="algorithm" value="Masters (vs. Reference)">
+            Masters (vs. Reference)
+          </label>
+          <br>
+          <br>
+        <!--Container for mode options and header-->
+          <strong>Mode:</strong>
+          <br>
+            <!--Options for mode-->
+          <label class="radioContainer" for="nonEmptySelect">
+            <input type="radio" id="nonEmptySelect" name="mode" value="Non-Empty Markers" checked>
+            Non-Empty Markers
+          </label>
+          <br>
+          <label class="radioContainer" for="querySelect">
+            <input type="radio" id="querySelect" name="mode" value="Query Markers">
+            Query Markers
+          </label>
+          <br>
+          <label class="radioContainer" for="referenceSelect">
+            <input type="radio" id="referenceSelect" name="mode" value="Reference Markers">
+            Reference Markers
+          </label>
+          <br/>
+          <br>
+          <label class="checkContainer" for="includeAmelogeninInput">
+            <input type="checkbox" id="includeAmelogeninInput" value="includeAmelogenin">
+            Include Amelogenin
+          </label>  
+          
+        </div>
+        <button id="help" onclick="window.open('help.html','_blank')">Help</button>
+
+
+        <!--Container for the compare button that will generate-->
+        <div id="compareButtonContainer">
+          <button id="compareButton">Compare</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="results" class="dataBox">
+      <div class="headerBox">
+        <strong>Results</strong>
+      </div>
+      <div id="concordanceResults"></div>
+    </div>
+  </body>
+</html>

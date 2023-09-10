@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cell Line Verification</title>
+    <!--<link rel="stylesheet" href="style/style.css">-->
+    <script src="scripting/databaseNEW.js"></script>
+    <script src="scripting/FileParsing.js"></script>
+    <script src="scripting/main.js"></script>
+    <script src="scripting/algorithms.js"></script>
+    <script src="scripting/settingsGrab.js"></script>
+  </head>
+  <body>
+    <h1>Cell Line Verification</h1>
+    <!--Box for uploading the query and reference files-->
+    <div id="uploadBox">
+      <div class="fileUploadContainer">
+        <h3>Upload Query</h3>
+        <input type="file" id="queryUpload">
+      </div>
+    </div>
+    <div id="compareSettings" class="dataBox">
+      <!--Title box for the compare settings box-->
+      <div class="headerBox">
+        <h2>Comparison Settings</h2>
+      </div>
+      <div id="enterSettings">
+        <div id="amelogeninCheckboxContainer" class="secondaryInfoBox">
+          <input type="checkbox" id="includeAmelogeninInput" value="includeAmelogenin">
+          <p>Include Amelogenin</p>
+        </div>
+        <!--Container for algorithm options and header-->
+        <div id="algorithmContainer" class="optionContainer">
+          <div class="optionHeader" id="algorithmHeaderContainer">
+            <h3>Algorithm</h3>
+          </div>
+          <!--Options for algorithm-->
+          <div class="dropDownOptions" id="algorithmDropDownOptions">
+            <input type="radio" id="tanabeSelect" name="algorithm" value="Tanabe" checked>
+            <p>Tanabe</p>
+            <br>
+            <input type="radio" id="mastersVQuerySelect" name="algorithm" value="Masters (vs. Query)">
+            <p>Masters (vs. Query)</p>
+            <br>
+            <input type="radio" id="mastersVReferenceSelect" name="algorithm" value="Masters (vs. Reference)">
+            <p>Masters (vs. Reference)</p>
+          </div>
+        </div>
+        <!--Container for mode options and header-->
+        <div id="modeContainer" class="optionContainer">
+          <div class="optionHeader" id="modeHeaderContainer">
+            <h3>Mode</h3>
+          </div>
+            <!--Options for mode-->
+          <div class="dropDownOptions" id="modeDropDownOptions">
+            <input type="radio" id="nonEmptySelect" name="mode" value="Non-Empty Markers" checked>
+            <p>Non-Empty Markers</p>
+            <br>
+            <input type="radio" id="querySelect" name="mode" value="Query Markers">
+            <p>Query Markers</p>
+            <br>
+            <input type="radio" id="referenceSelect" name="mode" value="Reference Markers">
+            <p>Reference Markers</p>
+          </div>
+        </div>
+      </div>
+      <!--Container for the compare button that will generate-->
+      <div id="compareButtonContainer">
+        <button id="compareButton">Compare</button>
+      </div>
+    </div>
+    <div id="results" class="dataBox">
+      <div class="headerBox">
+        <h2>Results</h2>
+      </div>
+      <div id="concordanceResults"></div>
+    </div>
+  </body>
+</html>

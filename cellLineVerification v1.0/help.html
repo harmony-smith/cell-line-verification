@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cell Line Verification - HELP</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow">
+    <link rel="stylesheet" href="style/style.css">
+  </head>
+  <body>
+    <h1>Cell Line Verification - Help</h1>
+    <div id="helpPage">
+        <h2 id="tableOfContents">Table of Contents</h2>
+        <p id="section"> <b><a href="#1">1. Input</a></b></p>
+        <p id="subSection"><a href="#1a">1a. Marker Boxes</a></p>
+        <p id="subSection"><a href="#1b">1b. File Uploads</a></p>
+        <p id="section"><b><a href="#2">2. Scoring</a></b></p>
+        <p id="subSection"><a href="#2a">2a. Algorithms</a></p>
+        <p id="subSection"><a href="#2b">2b. Modes</a></p>
+        <p id="subSection"><a href="#2c">2c.Amelogenin</a></p>
+        <p id="section"><b><a href="#3">3. Changing the Reference Database</a></b></p>
+        <p id="section"><b><a href="#4">4. Results</a></b></p>
+        <p id="section"><b><a href="#5">5. Known Problems</a></b></p>
+        <h2 id="1">1. Input</h2>
+        <h3 id="1a">1a. Marker Boxes</h3>
+        <p>
+            You can use the marker boxes to input individual markers without having to upload a formatted file.
+            Just type the values into the corresponding boxes. To put in multiple allele values, separate the
+            values with commas (Eg. <span>12,13</span>). The input boxes can be used alongside the file upload. Uploading a file won't
+            overwrite the query, nor will the query overwrite the file. When both forms of input are being used, the 
+            merker box query will always appear above the file queries with the cell line name "Query". 
+            <ul>
+                <li>Amelogenin values are case insensitive (<span>X</span> and <span>x</span> are read as matching).</li>
+                <li>There is no limit to the number of alleles that can be given for a marker.</li>
+                <li>Order of alleles (<span>12,13</span> vs. <span>13,12</span>) has no effect on results.</li>
+                <li>Identical alleles should only be entered once (use <span>12,13</span> rather than <span>12,12,13</span>).</li>
+                <li>Commas should be only be put between numbers (<span>12,13,</span> and <span>,12,13</span> are both wrong).</li>
+                <li>Do not put spaces before, after, or between numbers.</li>
+            </ul>
+        </p>
+        <h3 id="1b">1b. File Uploads</h3>
+        <p>
+            Accepted file types are <span>.csv</span>. A .csv file is like a basic form of excel file, so using working
+            in an excel file then making a .csv copy is probably easiest.
+        </p>
+        <h4>How to Save as <span>.csv</span>:</h4>
+        <ol>
+            <li>Go the <span>File</span>, then click on <span>Save As...</span></li>
+            <li>From the <span>File Format</span> dropdown menu, choose any format with a <span>.csv</span> file extension. (Some options
+            are <span>Comma Separated Values</span>, <span>CSV UTF-8</span>, and <span>Macintosh Comma Separated</span>)</li>
+            <li>Press <span>Save</span>.</li>
+        </ol>
+        <p>
+            Each row in the submitted file (except the header) is read as its own query. If a sample does not have data for a certain marker, it
+            should be left blank. A column called <span>mod_id</span>, <span>Name</span>, or <span>Sample</span> is required, and each query
+            must have a name. Put all data columns to the right of that column. The order of data columns does not matter, but the names must be correct.
+            If a sample does not have data for that column, leave the cell blank. Recognized names for amelogenin are <span>Am</span>, <span>am</span>, 
+            <span>AM</span>, <span>Amelogenin</span>, <span>amelogenin</span>, <span>AMEL</span>, and <span>amel</span>. Enter data into cells the same
+            way it would be put into the marker boxes in section 1a, 'Marker Boxes'.
+            <br>
+            <br>
+            <img src="style/example.png" width="350px">
+            <br>
+            <i>Example of a properly formatted table.</i>
+        </p>
+        <p>
+            Formatting for query tables and custom reference database tables are the same. To upload queries, click <span>Upload File</span>
+            next to <span>Upload Query</span>, or <span>Upload Custom References</span> for uploading custom references. When uploading a new file after a file of
+            the same name has already been submitted, the tool doesn't recognize the new file as something different and will continue to use the old file.
+            To avoid this, either make sure the new file has a different name, or press <span>Upload File</span>, then <span>Cancel</span>, and 
+            then upload the new file.
+        </p>
+        <h2 id="2">2. Scoring</h2>
+        <h3 id="2a">2a. Algorithms</h3>
+        <p>
+            There are 3 different algorithms (<span>Tanabe</span>, <span>Masters v. Query</span>, and <span>Masters v. Reference</span>) used to calculate concordance that can be chosen using the radio buttons at the right.
+        </p>
+        <h4><span>Tanabe</span></h4>
+        <img src="style/tanabe.png" width="350px" class="example">
+        <h4><span>Masters (vs. Query)</span></h4>
+        <img src="style/query.png" width="200px" class="example">
+        <h4><span>Masters (vs. Reference)</span></h4>
+        <img src="style/reference.png" width="220px" class="example">
+        <h3 id="2b">2b. Modes</h3>
+        <h4><span>Non-empty Markers</span></h4>
+        <p>
+            The score is calculated using markers where both the reference and query have allele data.
+        </p>
+        <h4><span>Query Markers</span></h4>
+        <p>
+            The score is calculated using the markers that the query has data for, regardless of whether the reference has data.
+        </p>
+        <h4><span>Reference Markers</span></h4>
+        <p>
+            The score is calculated using the markers that the reference has data for, regardless of whether the query has data.
+        </p>
+        <img src="style/modes.png" width="730" class="example">
+        <h3 id="2c">2c. Amelogenin</h3>
+        <p>
+            Check the box labelled <span>Amelogenin</span> to include amelogenin in the score calculation. Amelogenin will appear in the
+            results table whether or not the box is checked.
+        </p>
+        <h2 id="3">3. Changing the Reference Database</h2>
+        <p>
+            Submit a properly formatted table of references to <span>Upload Custom References</span> to use your own database instead of the
+            one built in. If nothing is submited, the built in database will auomatically be used. If custom references are uploaded,
+            the tool will use that instead of its own database.
+        </p>
+        <p>
+            To go back to using the default database after uploading, click <span>Upload File</span> next to <span>Upload Custom References</span>,
+            then press <span>Cancel</span> on the pop-up. This clears the file upload tool, and then the default database will be used.
+        </p>
+        <h2 id="4">4. Results</h2>
+        <p>
+            If the concordance score for a cell line is 80% or above, it be <span id="green">green</span>. If the score is 60% to 79%,
+            it will be <span id="yellow">orange</span>. Scores below 60% are <span id="red">red</span>.
+        </p>
+        <p>
+            Columns with missing query marker data will be put towards the end of the table.
+        </p>
+        <p>
+            On the final results table, amelogenin is written as '<span>AMEL</span>.'
+        </p>
+        <h2 id="5">5. Known Problems</h2>
+        <h2><a href="index.html">Back</a></h2>
+    </div>
+  </body>
+</html>
